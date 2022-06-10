@@ -260,7 +260,12 @@ public class La_distancia_mas_corta {
 
             }      
         
-        JOptionPane.showMessageDialog(null, "La distancia minima del nodo \"" + nodo_de_inicio + "\" al nodo \"" + nodo_final + "\" es: " + M_D[nodo_de_inicio_valor_ascci - 65][nodo_final_valor_ascci - 65]);
+         if  (M_D[nodo_de_inicio_valor_ascci - 65][nodo_final_valor_ascci - 65].chars().allMatch(Character::isDigit)){
+            JOptionPane.showMessageDialog(null, "La distancia minima del nodo \"" + nodo_de_inicio + "\" al nodo \"" + nodo_final + "\" es: " + M_D[nodo_de_inicio_valor_ascci - 65][nodo_final_valor_ascci - 65]);
+         }else{
+            JOptionPane.showMessageDialog(null, "No hay ningun camino disponible, la distancia es infinita");
+         }
+        
             
         respuesta = JOptionPane.showOptionDialog(null, "¿Desea realizar mas consultas?", "CONSULTAS?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);    
         
