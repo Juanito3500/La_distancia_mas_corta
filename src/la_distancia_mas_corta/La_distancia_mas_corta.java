@@ -122,10 +122,12 @@ public class La_distancia_mas_corta {
             
             for(int index_f=0;index_f<=num_nodos-2;index_f++){
                 
-            elemento_estatico_por_fila_es_un_numero = true;
-            elemento_en_barrido_es_un_numero = true;
+
                 
                 for(int index_c=0;index_c<=num_nodos-2;index_c++){
+                    
+                elemento_estatico_por_fila_es_un_numero = true;
+                elemento_en_barrido_es_un_numero = true;
                 
                     //Comprobando si el elemento estatico por fila es un numero
                     if(M_D[filas_y_columnas_disponibles[index_f]][u].chars().allMatch(Character::isDigit)){
@@ -147,16 +149,16 @@ public class La_distancia_mas_corta {
                     columnas_posibles_interseccion[0]=u;
                     columnas_posibles_interseccion[1]=filas_y_columnas_disponibles[index_c];
 
-                    //OBTENIENDO LOS INDICES DE LA CELDA INTERSECCION
+                    //OBTENIENDO LOS INDICES DEL ELEMENTO INTERSECCION
                     //=============================================================
                     
                     for(int fil_inter = 0; fil_inter<2;fil_inter++){
                     
                         for(int col_inter=0;col_inter<2;col_inter++){
                             
-                            v_v_1 = (filas_posibles_interseccion[fil_inter]==filas_y_columnas_disponibles[index_f])||(columnas_posibles_interseccion[col_inter]==u);
-                            v_v_2 = (filas_posibles_interseccion[fil_inter]==u)||(columnas_posibles_interseccion[col_inter]==filas_y_columnas_disponibles[index_c]);
-                            v_v_3 = (filas_posibles_interseccion[fil_inter]==u)||(columnas_posibles_interseccion[col_inter]==u);
+                            v_v_1 = (filas_posibles_interseccion[fil_inter]!=filas_y_columnas_disponibles[index_f])||(columnas_posibles_interseccion[col_inter]!=u);
+                            v_v_2 = (filas_posibles_interseccion[fil_inter]!=u)||(columnas_posibles_interseccion[col_inter]!=filas_y_columnas_disponibles[index_c]);
+                            v_v_3 = (filas_posibles_interseccion[fil_inter]!=u)||(columnas_posibles_interseccion[col_inter]!=u);
                                 
                             if (v_v_1&&v_v_2&&v_v_3){
 
@@ -172,7 +174,7 @@ public class La_distancia_mas_corta {
                     
                     //Comprobando si el elemento interseccion es un numero
                     //en caso no sea un numero no se hara nada ya que se trata del
-                    //
+                    //infinito
                     if(M_D[elemento_interseccion_fila][elemento_interseccion_columna].chars().allMatch(Character::isDigit)){
                         
                         valor_elemento_interseccion = Integer.parseInt(M_D[elemento_interseccion_fila][elemento_interseccion_columna]);
@@ -185,6 +187,7 @@ public class La_distancia_mas_corta {
                                 M_D[elemento_interseccion_fila][elemento_interseccion_columna] = String.valueOf(suma_de_elementos);
                             }
                         }
+                        
                     }else{
                         //Comprobando si el valor de los dos elementos que forma el elemento interseccion
                         //son numeros
@@ -260,7 +263,7 @@ public class La_distancia_mas_corta {
         JOptionPane.showMessageDialog(null, "La distancia minima del nodo \"" + nodo_de_inicio + "\" al nodo \"" + nodo_final + "\" es: " + M_D[nodo_de_inicio_valor_ascci - 65][nodo_final_valor_ascci - 65]);
             
         respuesta = JOptionPane.showOptionDialog(null, "¿Desea realizar mas consultas?", "CONSULTAS?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);    
-
+        
         if(respuesta==1){
             mas_consultas=false;
         }
