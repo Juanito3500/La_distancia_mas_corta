@@ -19,6 +19,21 @@ public class La_distancia_mas_corta {
     
     
     
+    
+    
+    //Suponiendo que M_D esta rellenada
+    //Empezando a modificar nuestra matriz de distancias 
+        //Bucles de barrido de la matriz M_D
+    
+        for(int fil = 0;fil <= num_nodos-1;fil++){
+            
+            for(int col = 0; col <= num_nodos-1;col++){
+                
+                
+                
+            }
+        }
+    
     }
     
 }
